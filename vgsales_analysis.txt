@@ -1,0 +1,16 @@
+SELECT * FROM video_game.vgsales;
+SELECT Name, Year, NA_Sales, EU_Sales, JP_Sales, Other_Sales From vgsales  WHERE Genre='Strategy' ORDER BY Global_Sales DESC;
+#list the top 5 publishers based on the NA sales
+select Publisher, SUM(NA_Sales) FROM vgsales GROUP BY Publisher ORDER BY SUM(NA_Sales) DESC LIMIT 5;
+Select Publisher, Global_Sales FROM vgsales WHERE year = 2016 Order By Global_Sales DESC ;
+#Number of games published in each platform
+select platform, COUNT(Name) From vgsales GROUP BY platform ORDER BY count(Name) DESc;
+select Name, Global_Sales FROM vgsales WHERE platform = 'DS' ORDER BY Global_Sales DESC;
+#average global sales of each genre
+select genre, AVG(Global_Sales) FROM vgsales GROUP BY genre;
+#selecting top 10 games by global sales
+SELECT Name, Global_Sales FROM vgsales ORDER BY Global_Sales DESC LIMIT 10;
+#find the total sales for each year 
+select Year, Sum(Global_Sales) FROM vgsales GROUP BY Year ORDER BY Year ASC;
+#selecting the game having highest total sales in between 2001 and 2010
+select Name, Global_Sales, Year FROM vgsales WHere Year>=2001 AND Year<=2010 ORDER BY Global_Sales DESC;
